@@ -1,0 +1,77 @@
+<h1>Library Website</h1>
+</header>
+<section class="get">
+    <h3>Get Books</h3>
+    <a href="/get-data">LOAD CATALOG</a>
+    <div>
+        {{# each items }}
+            <article class="item">
+                <div>Title: {{ this.title }}</div>
+                <div>Content: {{ this.content }}</div>
+                <div>Author: {{ this.author }}</div>
+                <div>Copies: {{this.copies }}</div>
+                <div>ID: {{ this._id }}</div>
+                <form action = "/user/userCheckout" method = "post">
+                    <input type = "hidden" id = "id" name = "id" value = {{this._id}}>
+                <button type = "submit">CHECKOUT</button>
+                </form>
+            </article>
+        {{/each}}
+    </div>
+</section>
+<section class = "getCheckedOut">
+    <h3>Account Overview</h3>
+        <div>
+            {{# each item}}
+                <article class = "item">
+                    <div>Title : {{this.title}}</div>
+                    <div>Content : {{this.content}}</div>
+                    <div>Author : {{this.author}}</div>
+                    <form action = "/user/userReturn" method = "post">
+                        <input type = "hidden" id = "id" name = "id" value = {{this._id}}>
+                        <input type = "hidden" id = "title" name = "title" value = {{this.relid}}>
+                    <button type = "submit">RETURN</button>
+                    </form>
+                </article>
+            {{/each}}
+        </div>
+    <form action = "/user/getUserCheckedOut" method = "post" >
+        <button type = "submit">LOAD DATA</button>
+    </form>
+</section>
+<section class = "checkout">
+    <h3>Check Out</h3>
+    <form action = "/checkout" method = "post">
+        <div class = input>
+            <label for = "card">Card ID</label>
+            <input type = "text" id = "card" name = "card">
+        </div>
+        <div class = "input">
+            <label for = "password">Password</label>
+            <input type = "text" id = "password" name = "password">
+        </div>
+        <div class = "input">
+            <label for = "id">Book ID</label>
+            <input type = "text" id = "id" name = "id">
+        </div>
+        <button type = "submit">CHECKOUT</button>
+    </form>
+</section>
+<section class = "return">
+    <h3>Return Book</h3>
+    <form action = "/return" method = "post">
+        <div class = input>
+            <label for = "card">Card ID</label>
+            <input type = "text" id = "card" name = "card">
+        </div>
+        <div class = "input">
+            <label for = "password">Password</label>
+            <input type = "text" id = "password" name = "password">
+        </div>
+        <div class = "input">
+            <label for = "title">Book Title</label>
+            <input type = "text" id = "title" name = "title">
+        </div>
+        <button type = "submit">RETURN</button>
+    </form>
+</section>

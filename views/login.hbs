@@ -1,0 +1,47 @@
+<header class = "jumbotron">
+    <div class ="container">
+<h1>Login</h1>
+    </div>
+</header>
+<br>
+<form action = "/createCard" method="post" id="ReturningUser" style="display:block">
+        <h3>Returning User Login</h3>
+        <div>
+            <label for = "cardNumber">Card Number</label>
+            <input type = "text" id = "cardNumber" name = "cardNumber">
+        </div>
+        <div>
+            <label for = "password">Password</label>
+            <input type = "password" id = "password" name = "password">
+        </div>
+        <br> <br> <br>
+        <button type = "submit">Login</button>
+    </form>
+<br>
+<form action = "/login" method="post" id="newUser" style="display:none">
+    <h3>Create a New Account</h3>
+    <div id="cardNumberDiv">
+        <label for = "cardNumber">Card Number</label>
+        <input type = "text" id = "cardNumber2" name = "cardNumber2">
+    </div>
+    <div>
+        <label for = "password">Password</label>
+        <input type = "password" id = "password" name = "password">
+    </div>
+    <br><br><br><br>
+    <button type = "submit" onclick="reverse(this)">Go Back</button>
+</form>
+    <button type = "submit" onclick="showInputs(this)" id="createButton">Create a New Account</button>
+<script>
+    function reverse(button){
+        button.style.visibility ="hidden";
+        document.getElementById("createButton").style.display = "hidden";
+        document.getElementById("newUser").style.display ="hidden";
+        document.getElementById("ReturningUser").style.display = "block";
+    }
+    function showInputs(button) {
+        button.style.visibility="hidden";
+        document.getElementById("ReturningUser").style.display = "none";
+        document.getElementById("newUser").style.display = "block";
+    }
+</script>
